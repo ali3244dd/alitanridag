@@ -6,7 +6,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Key Generator</title>
     <style>
-        /* CSS stil kodları buraya gelebilir */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            text-align: center;
+            width: 300px;
+        }
+
+        .select-box,
+        .input-box,
+        .buttons {
+            margin-bottom: 20px;
+        }
+
+        button {
+            font-size: 14px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .output {
+            font-size: 16px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: left;
+        }
     </style>
 </head>
 
@@ -17,7 +63,9 @@
             <label for="keyType">Select Key Type:</label>
             <select id="keyType">
                 <option value="steamKey">Steam Key</option>
-                <!-- Diğer anahtar türleri buraya eklenebilir -->
+                <option value="robloxGiftCard">Roblox Gift Card</option>
+                <option value="discordGift">Discord Gift</option>
+                <option value="discordNitro">Discord Nitro Promo</option>
             </select>
         </div>
         <div class="input-box">
@@ -44,15 +92,38 @@
             return steamKey;
         }
 
+        function generateRobloxGiftCard() {
+            let robloxCode = '';
+            for (let i = 0; i < 12; i++) {
+                robloxCode += Math.floor(Math.random() * 10);
+                if (i % 4 === 3 && i !== 11) {
+                    robloxCode += '-';
+                }
+            }
+            return robloxCode;
+        }
+
+        function generateDiscordGift() {
+            // Discord Gift oluşturma mantığı buraya gelecek
+        }
+
+        function generateDiscordNitro() {
+            // Discord Nitro Promo oluşturma mantığı buraya gelecek
+        }
+
         function generateKey() {
             const keyType = document.getElementById("keyType").value;
             let generatedKey = '';
             if (keyType === "steamKey") {
                 generatedKey = generateSteamKey();
-            } else {
-                generatedKey = "Invalid Key Type";
+            } else if (keyType === "robloxGiftCard") {
+                generatedKey = generateRobloxGiftCard();
+            } else if (keyType === "discordGift") {
+                generatedKey = generateDiscordGift();
+            } else if (keyType === "discordNitro") {
+                generatedKey = generateDiscordNitro();
             }
-            document.getElementById("output").textContent = generatedKey;
+            document.getElementById("output").textContent = generatedKey || "Invalid Key Type";
         }
 
         function generateBulkKeys() {
@@ -63,12 +134,16 @@
                 let key = '';
                 if (keyType === "steamKey") {
                     key = generateSteamKey();
-                } else {
-                    key = "Invalid Key Type";
+                } else if (keyType === "robloxGiftCard") {
+                    key = generateRobloxGiftCard();
+                } else if (keyType === "discordGift") {
+                    key = generateDiscordGift();
+                } else if (keyType === "discordNitro") {
+                    key = generateDiscordNitro();
                 }
                 bulkKeys += key + '<br>';
             }
-            document.getElementById("output").innerHTML = bulkKeys;
+            document.getElementById("output").innerHTML = bulkKeys || "Invalid Key Type";
         }
     </script>
 </body>
