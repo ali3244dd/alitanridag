@@ -1,1 +1,133 @@
 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Key Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .select-box, .input-box {
+            margin-bottom: 20px;
+        }
+
+        .output {
+            font-size: 18px;
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            font-size: 16px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Key Generator</h1>
+        <div class="select-box">
+            <label for="keyType">Select Key Type:</label>
+            <select id="keyType">
+                <option value="steamKey">Steam Key</option>
+                <option value="discordGift">Discord Gift</option>
+                <option value="discordNitro">Discord Nitro Promo</option>
+                <option value="robloxGiftCard">Roblox Gift Card</option>
+            </select>
+        </div>
+        <div class="input-box">
+            <label for="quantity">Enter Quantity:</label>
+            <input type="number" id="quantity" min="1" value="1">
+        </div>
+        <button onclick="generateKey()">Generate Key</button>
+        <button onclick="generateBulkKeys()">Generate Bulk Keys</button>
+        <div class="output" id="output"></div>
+    </div>
+
+    <script>
+        function generateSteamKey() {
+            // Steam key generation logic
+        }
+
+        function generateDiscordGift() {
+            // Discord Gift generation logic
+        }
+
+        function generateDiscordNitro() {
+            // Discord Nitro Promo generation logic
+        }
+
+        function generateRobloxGiftCard() {
+            // Roblox Gift Card generation logic
+        }
+
+        function generateKey() {
+            const keyType = document.getElementById("keyType").value;
+            let generatedKey = '';
+            if (keyType === "steamKey") {
+                generatedKey = generateSteamKey();
+            } else if (keyType === "discordGift") {
+                generatedKey = generateDiscordGift();
+            } else if (keyType === "discordNitro") {
+                generatedKey = generateDiscordNitro();
+            } else if (keyType === "robloxGiftCard") {
+                generatedKey = generateRobloxGiftCard();
+            }
+            document.getElementById("output").textContent = generatedKey;
+        }
+
+        function generateBulkKeys() {
+            const keyType = document.getElementById("keyType").value;
+            const quantity = parseInt(document.getElementById("quantity").value);
+            let bulkKeys = '';
+            for (let i = 0; i < quantity; i++) {
+                let key = '';
+                if (keyType === "steamKey") {
+                    key = generateSteamKey();
+                } else if (keyType === "discordGift") {
+                    key = generateDiscordGift();
+                } else if (keyType === "discordNitro") {
+                    key = generateDiscordNitro();
+                } else if (keyType === "robloxGiftCard") {
+                    key = generateRobloxGiftCard();
+                }
+                bulkKeys += key + '<br>';
+            }
+            document.getElementById("output").innerHTML = bulkKeys;
+        }
+    </script>
+</body>
+
+</html>
